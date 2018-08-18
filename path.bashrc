@@ -10,4 +10,7 @@ pathmunge() {
 }
 
 # VSCode
-pathmunge '/Applications/Visual Studio Code.app/Contents/Resources/app/bin'
+pathmunge "$HOME/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# NPM
+pathmunge "$HOME/.npm-packages/bin"
