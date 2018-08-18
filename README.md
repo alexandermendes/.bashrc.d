@@ -20,3 +20,9 @@ do
  source “$file”
 done
 ```
+
+Source:
+
+```
+~/.bash_profile
+```
