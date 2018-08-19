@@ -17,7 +17,7 @@ Add the code below to the top of your `~/.bash_profile`.
 ```bash
 for file in ~/.bashrc.d/*.bashrc;
 do
- source “$file”
+ source "$file"
 done
 ```
 
