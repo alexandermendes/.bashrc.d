@@ -27,3 +27,4 @@ imsg() {
   git submodule update ./wordpress/plugins/im-styleguide
   vagrant provision wcp_devstack --provision-with "$scripts"
   open "https://slate.local.wcp.imdserve.com/styleguide/"
+}
