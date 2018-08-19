@@ -8,3 +8,5 @@ alias .5='cd ../../../../../'     # Up five directories
 # Common typos
 alias cd..='cd ../'
 
+# Autojump
+[ -f '/usr/local/etc/profile.d/autojump.sh' ] && . '/usr/local/etc/profile.d/autojump.sh'
