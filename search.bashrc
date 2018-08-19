@@ -10,3 +10,5 @@ so() {
   open "http://www.stackoverflow.com/search?q=$q"
 }
 
+# Processes
+alias pgrep='ps aux | grep'

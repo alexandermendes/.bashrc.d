@@ -12,6 +12,16 @@ pathmunge () {
     fi
 }
 
+# Bin directories
+pathmunge /sbin
+pathmunge /usr/sbin
+pathmunge /usr/local/sbin
+pathmunge /bin
+pathmunge /usr/bin
+pathmunge /opt/local/bin
+pathmunge /usr/local/bin
+pathmunge "$HOME/bin"
+
 # VSCode
 pathmunge "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
