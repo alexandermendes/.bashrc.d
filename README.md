@@ -21,6 +21,14 @@ do
 done
 ```
 
+Install requirements:
+
+```
+brew update
+brew install bash-git-prompt
+brew install autojump
+```
+
 Source:
 
 ```
