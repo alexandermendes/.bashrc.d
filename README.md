@@ -1,4 +1,4 @@
-# bash_profile
+# .bashrc.d
 
 Clone:
 
