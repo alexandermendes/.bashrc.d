@@ -22,10 +22,8 @@ imvp() {
 
 # Update and launch the style guide for slate
 imsg() {
+  local scripts='link_vendors,link_plugin_im-styleguide,link_theme_im-slate-theme'
   cd "${WCP_CORE}"
   git submodule update ./wordpress/plugins/im-styleguide
-  scripts='link_vendors,link_plugin_im-styleguide,link_theme_im-slate-theme'
   vagrant provision wcp_devstack --provision-with "$scripts"
   open "https://slate.local.wcp.imdserve.com/styleguide/"
-}
-
