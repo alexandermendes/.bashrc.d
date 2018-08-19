@@ -1,9 +1,6 @@
-# Constants
-EGREP=$(which egrep)
-
 # Add to PATH
 pathmunge () {
-    if ! echo $PATH | $EGREP -q "(^|:)$1($|:)" ; then
+    if ! echo $PATH | $(which egrep) -q "(^|:)$1($|:)" ; then
         if [ "$2" = "after" ] ; then
             PATH=$PATH:$1
         else
