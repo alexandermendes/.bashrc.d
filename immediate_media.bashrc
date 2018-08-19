@@ -4,7 +4,8 @@ WCP_CORE='~/documents/github/wcp-core'
 # Start
 imstart() {
   cd "${WCP_CORE}"
-  vagrant up wcp_devstack 
+  vagrant up wcp_devstack
+  code "$WCP_CORE"
 }
 
 # Update
