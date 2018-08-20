@@ -42,9 +42,12 @@ im_start() {
 im_update() {
     local p=$(pwd)
     cd "${WCP_CORE}"
+    vagrant box update wcp_devstack
     git submodule update --recursive --remote
     cd "${WCP_CORE}/wordpress/themes"
     yarn install
+    cd ..
+    composer install --no-dev
     cd "$p"
 }
 
