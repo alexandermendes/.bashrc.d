@@ -25,8 +25,9 @@ Install requirements:
 
 ```
 brew update
-brew install bash-git-prompt
 brew install autojump
+
+git clone git://github.com/jimeh/git-aware-prompt.git /usr/local/bin/git-aware-prompt
 ```
 
 Source:
