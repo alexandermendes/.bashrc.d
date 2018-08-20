@@ -4,9 +4,6 @@ WCP_CORE="$HOME/documents/github/wcp-core"
 # Inteface
 im() {
     case "$1" in
-    "start" | "s")
-        im_start
-    ;;
     "update" | "u")
         im_update
     ;;
@@ -14,28 +11,25 @@ im() {
         shift
         im_with "$@"
     ;;
-    "stylguide" | "sg")
+    "ll")
+        im_with 'list_linked'
+    ;;
+    "lv")
+        im_with 'link_vendor'
+    ;;
+    "styleguide" | "sg")
         im_styleguide
     ;;
-    "debug_on")
+    "debug_on" | "debugon")
         im_debug_on
     ;;
-    "debug_off")
+    "debug_off" | "debugoff")
         im_debug_off
     ;;
     *)
-        echo "Usage: $0 {start|update|with|styleguide|debug_on|debug_off}"
+        echo "Usage: $0 {update|with|styleguide|debug_on|debug_off}"
     ;;
     esac
-}
-
-# Start
-im_start() {
-    local p=$(pwd)
-    cd "${WCP_CORE}"
-    vagrant up wcp_devstack
-    code "$WCP_CORE"
-    cd "$p"
 }
 
 # Update
@@ -44,6 +38,7 @@ im_update() {
     cd "${WCP_CORE}"
     vagrant box update wcp_devstack
     git submodule update --recursive --remote
+    vagrant up --provision
     cd "${WCP_CORE}/wordpress/themes"
     yarn install
     cd ..
@@ -69,7 +64,7 @@ im_styleguide() {
     cd "${WCP_CORE}"
     git submodule update "$sg"
     cd "$sg"
-    composer install
+    composer install --no-dev
     cd "$sl"
     webpack
     vagrant provision wcp_devstack --provision-with "$p"
