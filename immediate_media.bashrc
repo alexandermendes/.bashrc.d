@@ -1,5 +1,5 @@
 # Constants
-WCP_CORE='~/documents/github/wcp-core'
+WCP_CORE="$HOME/documents/github/wcp-core"
 
 # Inteface
 im() {
