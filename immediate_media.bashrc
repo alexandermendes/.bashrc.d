@@ -17,8 +17,14 @@ im() {
     "stylguide" | "sg")
         im_styleguide
     ;;
+    "debug_on")
+        im_debug_on
+    ;;
+    "debug_off")
+        im_debug_off
+    ;;
     *)
-        echo "Usage: $0 {start|update|with|styleguide}"
+        echo "Usage: $0 {start|update|with|styleguide|debug_on|debug_off}"
     ;;
     esac
 }
@@ -58,5 +64,19 @@ im_styleguide() {
     webpack
     vagrant provision wcp_devstack --provision-with "$p"
     open "https://slate.local.wcp.imdserve.com/styleguide/"
+}
+
+# Turn on debugging
+im_debug_on() {
+    cd "${WCP_CORE}"
+    local pattern="s/php_admin_flag\[display_errors\] = off/php_admin_flag[display_errors] = on/g"
+    vagrant ssh wcp_devstack -c "sudo sed -i '$pattern' /etc/php-fpm.d/wcp.conf && sudo service php-fpm restart"
+}
+
+# Turn off debugging
+im_debug_off() {
+    cd "${WCP_CORE}"
+    local pattern="s/php_admin_flag\[display_errors\] = on/php_admin_flag[display_errors] = off/g"
+    vagrant ssh wcp_devstack -c "sudo sed -i '$pattern' /etc/php-fpm.d/wcp.conf && sudo service php-fpm restart"
 }
 
