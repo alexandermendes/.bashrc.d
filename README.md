@@ -3,7 +3,7 @@
 Clone:
 
 ```
-git clone https://github.com/alexandermendes/.bashrc.d ~/.bashrc.d 
+git clone https://github.com/alexandermendes/.bashrc.d ~/.bashrc.d
 ```
 
 Set permissions:
@@ -26,6 +26,7 @@ Install requirements:
 ```
 brew update
 brew install autojump
+brew install jq
 
 git clone git://github.com/jimeh/git-aware-prompt.git /usr/local/bin/git-aware-prompt
 ```
