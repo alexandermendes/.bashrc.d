@@ -23,4 +23,7 @@ pathmunge "$HOME/bin"
 pathmunge "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # NPM
-# pathmunge "$HOME/.npm-packages/bin"
+pathmunge "$HOME/.npm-packages/bin"
+
+# Node 8
+pathmunge "/usr/local/opt/node@8/bin"
