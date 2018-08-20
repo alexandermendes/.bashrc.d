@@ -30,3 +30,19 @@ git_delete_all_merged() {
     done 
 }
 
+# Open current branch in GitHub
+git_open() {
+    local origin=$(git config remote.origin.url)
+    local base=$(echo "$origin" | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")
+    local branch=$(git symbolic-ref --quiet --short HEAD )
+    open "$base/tree/$branch"
+}
+
+# Create a new PR for the current branch
+git_pr() {
+    local origin=$(git config remote.origin.url)
+    local base=$(echo "$origin" | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")
+    local branch=$(git symbolic-ref --quiet --short HEAD )
+    open "$base/pull/new/$branch"
+}
+
