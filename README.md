@@ -32,5 +32,5 @@ brew install autojump
 Source:
 
 ```
-~/.bash_profile
+. ~/.bash_profile
 ```
