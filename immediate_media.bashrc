@@ -18,6 +18,18 @@ im() {
     "lv")
         im_with 'link_vendor'
     ;;
+    "link_plugin" | "lp") 
+        im_with "link_plugin_im-$2"
+    ;;
+    "delink_plugin" | "dlp") 
+        im_with "delink_plugin_im-$2"
+    ;;
+    "link_theme" | "lt")  
+        im_with "link_themee_im-$2"
+    ;; 
+    "delink_theme" | "dlt")
+        im_with "delink_theme_im-$2"
+    ;;
     "styleguide" | "sg")
         im_styleguide
     ;;
