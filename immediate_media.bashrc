@@ -38,11 +38,12 @@ im_update() {
     cd "${WCP_CORE}"
     vagrant box update wcp_devstack
     git submodule update --recursive --remote
-    vagrant up --provision
+    vagrant up wcp_devstack --provision
     cd "${WCP_CORE}/wordpress/themes"
     yarn install
     cd ..
     composer install --no-dev
+    vagrant reload wcp_devstack
     cd "$p"
 }
 
@@ -59,13 +60,14 @@ im_with() {
 im_styleguide() {
     local p=$(pwd)
     local pr='link_vendor,link_plugin_im-styleguide,link_theme_im-slate-theme'
-    local sg='./wordpress/plugins/im-styleguide'
-    local sl="${WCP_CORE}/wordpress/themes/im-slate-theme"
+    local sg='/wordpress/plugins/im-styleguide'
+    local sl="/wordpress/themes/im-slate-theme"
     cd "${WCP_CORE}"
     git submodule update "$sg"
-    cd "$sg"
+    git submodule update "$sl"
+    cd "${WCP_CORE}/$sg"
     composer install --no-dev
-    cd "$sl"
+    cd "${WCP_CORE}/$sl"
     webpack
     vagrant provision wcp_devstack --provision-with "$p"
     open "https://slate.local.wcp.imdserve.com/styleguide/"
