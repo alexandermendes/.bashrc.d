@@ -25,10 +25,13 @@ im() {
         im_with "delink_plugin_im-$2"
     ;;
     "link_theme" | "lt")  
-        im_with "link_themee_im-$2"
+        im_with "link_theme_im-$2-theme"
     ;; 
     "delink_theme" | "dlt")
-        im_with "delink_theme_im-$2"
+        im_with "delink_theme_im-$2-theme"
+    ;;
+    "build_theme" | "bt")
+        im_build_theme "im-$2-theme" "${@:3}"
     ;;
     "styleguide" | "sg")
         im_styleguide
@@ -69,10 +72,20 @@ im_with() {
     cd "$p"
 }
 
+# Build a theme
+im_build_theme() {
+    local p=$(pwd)
+    cd "$WCP_CORE/wordpress/themes"
+    yarn install
+    cd "$1"
+    webpack "${@:2}"
+    cd "$p"
+}
+
 # Update and launch the style guide for slate
 im_styleguide() {
     local p=$(pwd)
-    local pr='link_vendor,link_plugin_im-styleguide,link_theme_im-slate-theme'
+    local pr='link_vendor,link_theme_im-slate-theme'
     local sg='wordpress/plugins/im-styleguide'
     local sl="wordpress/themes/im-slate-theme"
     cd "${WCP_CORE}"
