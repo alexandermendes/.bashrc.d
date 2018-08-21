@@ -1,5 +1,6 @@
 # Constants
 WCP_CORE="$HOME/documents/github/wcp-core"
+WP_ROOT_DIR='/opt/wordpress'
 
 # Inteface
 im() {
@@ -60,16 +61,17 @@ im_with() {
 im_styleguide() {
     local p=$(pwd)
     local pr='link_vendor,link_plugin_im-styleguide,link_theme_im-slate-theme'
-    local sg='/wordpress/plugins/im-styleguide'
-    local sl="/wordpress/themes/im-slate-theme"
+    local sg='wordpress/plugins/im-styleguide'
+    local sl="wordpress/themes/im-slate-theme"
     cd "${WCP_CORE}"
-    git submodule update "$sg"
-    git submodule update "$sl"
+    git submodule update "./$sg"
+    git submodule update "./$sl"
     cd "${WCP_CORE}/$sg"
     composer install --no-dev
     cd "${WCP_CORE}/$sl"
     webpack
     vagrant provision wcp_devstack --provision-with "$p"
+    vagrant ssh wcp_devstack -c 'wp plugin activate im-styleguide --path=/opt/wordpress --network'
     open "https://slate.local.wcp.imdserve.com/styleguide/"
     cd "$p"
 }
