@@ -118,4 +118,3 @@ im_debug_off() {
     vagrant ssh wcp_devstack -c "sudo sed -i '$pattern' /etc/php-fpm.d/wcp.conf && sudo service php-fpm restart"
     cd "$p"
 }
-

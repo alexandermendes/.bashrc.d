@@ -18,4 +18,3 @@ alias c='clear'
 
 # Snapshot
 alias snap='screencapture -w -c'
-

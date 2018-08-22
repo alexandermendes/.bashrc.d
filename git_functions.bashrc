@@ -27,7 +27,7 @@ git_delete_all_merged() {
     p=`pwd` && (echo .; git submodule foreach --recursive) | while read entering path; do
         cd "$p/${path//\'/}"
         git_delete_merged
-    done 
+    done
 }
 
 # Open current branch in GitHub
@@ -45,4 +45,3 @@ git_pr() {
     local branch=$(git symbolic-ref --quiet --short HEAD )
     open "$base/pull/new/$branch"
 }
-
