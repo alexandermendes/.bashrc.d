@@ -2,7 +2,7 @@
 WCP_CORE="$HOME/documents/github/wcp-core"
 WP_ROOT_DIR='/opt/wordpress'
 
-# Inteface
+# Interface
 im() {
     case "$1" in
     "update" | "u")
@@ -18,15 +18,15 @@ im() {
     "lv")
         im_with 'link_vendor'
     ;;
-    "link_plugin" | "lp") 
+    "link_plugin" | "lp")
         im_with "link_plugin_im-$2"
     ;;
-    "delink_plugin" | "dlp") 
+    "delink_plugin" | "dlp")
         im_with "delink_plugin_im-$2"
     ;;
-    "link_theme" | "lt")  
+    "link_theme" | "lt")
         im_with "link_theme_im-$2-theme"
-    ;; 
+    ;;
     "delink_theme" | "dlt")
         im_with "delink_theme_im-$2-theme"
     ;;

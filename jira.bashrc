@@ -7,6 +7,18 @@ JIRA_BASE_URL='https://immediateco.atlassian.net/rest/greenhopper/latest'
 JIRA_BOARD_ID=485
 JIRA_SPRINT=-1
 
+# Interface
+sprint() {
+    case "$1" in
+    "update" | "u")
+        jira_update_sprint
+    ;;
+    *)
+        jira_sprint
+    ;;
+    esac
+}
+
 jira_status_map() {
     case "$1" in
     "10155")
@@ -49,7 +61,7 @@ jira_issues() {
     echo "$r" | jq -c ".contents | $fmt | flatten"
 }
 
-jira_set_sprint() {
+jira_update_sprint() {
     local url="${JIRA_BASE_URL}/sprintquery/${JIRA_BOARD_ID}"
     local r=$(jira_request "$url")
     local s=$(echo "$r" | jq -c '.sprints[] | select(.state | contains("ACTIVE"))')
@@ -68,7 +80,7 @@ jira_print_header() {
 
 jira_sprint() {
     if [ "$JIRA_SPRINT" < 0 ]; then
-        jira_set_sprint -q
+        jira_update_sprint -q
     fi
     jira_print_header
     local id=$(echo "$JIRA_SPRINT" | jq -r '.id')
