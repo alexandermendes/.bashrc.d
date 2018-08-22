@@ -52,6 +52,7 @@ im() {
 im_update() {
     local p=$(pwd)
     cd "${WCP_CORE}"
+    git_delete_all_merged
     vagrant box update wcp_devstack
     git submodule update --recursive --remote
     vagrant up wcp_devstack --provision
