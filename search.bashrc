@@ -15,4 +15,3 @@ alias pgrep='ps aux | grep'
 
 # File system
 alias qfind="find . -name "
-
