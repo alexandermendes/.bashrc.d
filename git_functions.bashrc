@@ -46,11 +46,13 @@ git_pr() {
     open "$base/pull/new/$branch"
 }
 
-# Fetch branch
+# Print all my branches
 git_print_my_branches() {
     p=`pwd` && (echo .; git submodule foreach --recursive) | while read entering path; do
-        local name=$(basename "$p")
-        local refs=$(git for-each-ref --format='%(authordate:format:%m/%d/%Y %I:%M %p) %(align:25,left)%(authorname)%(end) %(refname:strip=3)' refs/remotes)
+        cd "$p/${path//\'/}"
+        git fetch --all --quiet
+        local name=$(basename "$path")
+        local refs=$(git for-each-ref --format='%(authordate:format:%m/%d/%Y) %(align:25,left)%(authorname)%(end) %(refname:strip=3)' refs/remotes)
         echo "$refs" | grep -w "Mendes" | sed "s/\$/ $name/"
     done
 }
