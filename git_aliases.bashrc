@@ -11,6 +11,7 @@ git config --global alias.cam "commit -a -m"
 git config --global alias.d "diff"
 git config --global alias.s "status -s"
 git config --global alias.f "fetch"
+git config --global alias.b "branch"
 
 git config --global alias.fb "!eval ${SRC_GIT_FUNCS} && git_fetch_branch"
 git config --global alias.fab "!eval ${SRC_GIT_FUNCS} && git_fetch_all_branches"
