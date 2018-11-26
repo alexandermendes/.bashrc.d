@@ -52,8 +52,13 @@ git_print_my_branches() {
         cd "$p/${path//\'/}"
         git fetch --all --quiet
         local name=$(basename "$path")
-        local refs=$(git for-each-ref --format='%(authordate:format:%m/%d/%Y) %(align:25,left)%(authorname)%(end) %(refname:strip=3)' refs/remotes)
-        echo "$refs" | grep -w "Mendes" | sed "s/\$/ $name/"
+        local refs=$(git for-each-ref --format='%(authordate:format:%m/%d/%Y) %(align:10,left)%(authoremail)%(end) %(refname:strip=3)' refs/remotes)
+        local mine=$(echo "$refs" | grep -w "mendes")
+        if [ -z "$mine" ]; then
+            continue
+        fi
+        printf "\n${GREEN}$(basename `pwd`)${NC}\n"
+        echo "$mine" | column -t
     done
 }
 
