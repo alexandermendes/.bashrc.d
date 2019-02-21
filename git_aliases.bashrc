@@ -2,7 +2,7 @@
 SRC_GIT_FUNCS='source ~/.bashrc.d/git_functions.bashrc'
 
 # Aliases
-git config --global alias.l "log --pretty=format:\"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]\" --decorate --date=short"
+git config --global alias.l "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 git config --global alias.a "add"
 git config --global alias.co "checkout"
