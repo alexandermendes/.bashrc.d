@@ -38,6 +38,15 @@ git_open() {
     open "$base/tree/$branch"
 }
 
+# Compare the current against the base branch
+git_compare() {
+    local origin=$(git config remote.origin.url)
+    local base=$(echo "$origin" | sed "s/git@\(.*\):\(.*\).git/https:\/\/\1\/\2/")
+    local branch=$(git symbolic-ref --quiet --short HEAD )
+    local default=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+    open "$base/compare/$default...$branch"
+}
+
 # Create a new PR for the current branch
 git_pr() {
     local origin=$(git config remote.origin.url)
