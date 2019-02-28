@@ -7,8 +7,8 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 
 # List
-alias ls='ls -lh'
-alias l='ls -lh'
+alias ls='ls -lah'
+alias l='ls -lah'
 
 # List hidden
 alias lsh='ls -ld .?*'
