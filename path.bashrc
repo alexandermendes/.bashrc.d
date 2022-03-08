@@ -27,3 +27,9 @@ pathmunge "$HOME/.npm-packages/bin"
 
 # Node 8
 pathmunge "/usr/local/opt/node@8/bin"
+
+# Android
+pathmunge "$HOME/Library/Android/sdk/emulator"
+pathmunge "$HOME/Library/Android/sdk/tools"
+pathmunge "$HOME/Library/Android/sdk/tools/bin"
+pathmunge "$HOME/Library/Android/sdk/platform-tools"
