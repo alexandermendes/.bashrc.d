@@ -28,7 +28,10 @@ brew update
 brew install autojump
 brew install jq
 
-git clone git://github.com/jimeh/git-aware-prompt.git /usr/local/bin/git-aware-prompt
+# git-aware-prompt
+mkdir ~/.bash
+cd ~/.bash
+git clone git://github.com/jimeh/git-aware-prompt.git
 ```
 
 Source:
